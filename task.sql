@@ -16,7 +16,7 @@ CREATE TABLE Products (
 );
 --rollback DROP TABLE Products;
 
---changeset mate.acamemy:3 labels:0.0.1
+--changeset mate.acamemy:3 labels:0.0.2
 CREATE TABLE Warehouses (
     ID INT AUTO_INCREMENT,
     Name VARCHAR(50),
@@ -27,7 +27,7 @@ CREATE TABLE Warehouses (
 );
 --rollback DROP TABLE Warehouses;
 
---changeset mate.acamemy:4 labels:0.0.1
+--changeset mate.acamemy:4 labels:0.0.3
 CREATE TABLE ProductInventory (
     ID INT,
     ProductID INT,
