@@ -51,4 +51,4 @@ CREATE TABLE Users (
 
 --changeset ladmael:2 labels:0.0.3
 CREATE INDEX Email ON Users (Email);
---rollback DROP INDEX Email;;
+--rollback DROP INDEX Email ON Users;
