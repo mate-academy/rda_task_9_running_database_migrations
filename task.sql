@@ -39,11 +39,11 @@ CREATE TABLE ProductInventory (
 );
 --rollback DROP TABLE ProductInventory;
 --changeset ladmael:1 labels:0.0.2
-CREATE TABLE Users(
+CREATE TABLE Users (
     ID INT,
-    FirstName VARCHAR(100),
-    LastName VARCHAR(100),
-    Email VARCHAR(100),
+    FirstName VARCHAR(50),
+    LastName VARCHAR(50),
+    Email VARCHAR(50),
     PRIMARY KEY(ID)
 );
 --changeset ladmael:2 labels:0.0.3
