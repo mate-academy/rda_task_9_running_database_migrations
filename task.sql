@@ -47,4 +47,4 @@ CREATE TABLE Users(
     PRIMARY KEY(ID)
 );
 --changeset ladmael:2 labels:0.0.3
-CREATE INDEX Email ON Users(Email);
+CREATE INDEX Email ON Users (Email);
