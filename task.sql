@@ -38,3 +38,18 @@ CREATE TABLE ProductInventory (
     PRIMARY KEY (ID)
 );
 --rollback DROP TABLE ProductInventory;
+
+--changeset Iryna.Lyakhova:5 labels:0.0.2
+CREATE TABLE Users(
+    ID INT,
+    FirstName VARCHAR (100),
+    LastName VARCHAR (100),
+    Email VARCHAR (100),
+    PRIMARY KEY (ID)
+);
+--ROLLBACK DROP TABLE Users;
+
+--changeset Iryna.Lyakhova:6 labels:0.0.3
+CREATE INDEX Email ON Users(Email);
+SHOW INDEX FROM Users WHERE Key_name = 'Email';
+--ROLLBACK ALTER TABLE Users DROP INDEX Email;
