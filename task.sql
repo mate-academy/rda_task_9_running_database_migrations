@@ -31,10 +31,24 @@ CREATE TABLE Warehouses (
 CREATE TABLE ProductInventory (
     ID INT,
     ProductID INT,
-    FOREIGN KEY (ProductID) REFERENCES Products(ID) ON DELETE NO ACTION,
     WarehouseAmount INT,
     WarehouseID INT,
+    FOREIGN KEY (ProductID) REFERENCES Products(ID) ON DELETE NO ACTION,
     FOREIGN KEY (WarehouseID) REFERENCES Warehouses(ID) ON DELETE NO ACTION,
     PRIMARY KEY (ID)
 );
 --rollback DROP TABLE ProductInventory;
+
+--changeset mateserver:5 labels:0.0.2
+CREATE TABLE Users (
+    ID INT,
+    FirstName VARCHAR(50),
+    LastName VARCHAR(50),
+    Email VARCHAR(100),
+    PRIMARY KEY (ID)
+);
+--rollback DROP TABLE Users;
+
+--changeset mateserver:6 labels:0.0.3
+CREATE INDEX Email ON Users (Email);
+--rollback DROP INDEX Email ON Users;
