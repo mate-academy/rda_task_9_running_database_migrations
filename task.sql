@@ -38,3 +38,17 @@ CREATE TABLE ProductInventory (
     PRIMARY KEY (ID)
 );
 --rollback DROP TABLE ProductInventory;
+
+--changeset mate.academy:5 labels:0.0.2
+CREATE TABLE Users (
+    ID INT AUTO_INCREMENT,
+    FirstName VARCHAR(20),
+    LastName VARCHAR(20),
+    Email VARCHAR(30),
+    PRIMARY KEY (ID)
+);
+--rollback DROP TABLE Users;
+
+--changeset mate.academy:6 labels:0.0.3
+CREATE INDEX Email ON Users(Email);
+--rollback ALTER TABLE Users DROP INDEX Email;
