@@ -38,3 +38,18 @@ CREATE TABLE ProductInventory (
     PRIMARY KEY (ID)
 );
 --rollback DROP TABLE ProductInventory;
+
+--changeset mate.yakov:1 labels:0.0.2
+CREATE TABLE Users (
+    ID INT,
+    ProductID INT,
+    FirstName VARCHAR(20),
+    LastName VARCHAR(20),
+    Email VARCHAR(30),
+    PRIMARY KEY (ID)
+);
+--rollback DROP TABLE Users;
+
+--changeset mate.yakov:2 labels:0.0.3
+CREATE INDEX Email ON Users (Email);
+--rollback ALTER TABLE Users DROP INDEX Email;
