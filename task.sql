@@ -1,6 +1,6 @@
 --liquibase formatted sql
 
---changeset mate.acamemy:1 labels:0.0.1
+--changeset mate.academy:1 labels:0.0.1
 CREATE TABLE Countries (
     ID INT,
     Name VARCHAR(50),
@@ -8,7 +8,7 @@ CREATE TABLE Countries (
 );
 --rollback DROP TABLE Countries;
 
---changeset mate.acamemy:2 labels:0.0.1
+--changeset mate.academy:2 labels:0.0.1
 CREATE TABLE Products (
     ID INT AUTO_INCREMENT,
     Name VARCHAR(50),
@@ -16,7 +16,7 @@ CREATE TABLE Products (
 );
 --rollback DROP TABLE Products;
 
---changeset mate.acamemy:3 labels:0.0.1
+--changeset mate.academy:3 labels:0.0.1
 CREATE TABLE Warehouses (
     ID INT AUTO_INCREMENT,
     Name VARCHAR(50),
@@ -27,7 +27,7 @@ CREATE TABLE Warehouses (
 );
 --rollback DROP TABLE Warehouses;
 
---changeset mate.acamemy:4 labels:0.0.1
+--changeset mate.academy:4 labels:0.0.1
 CREATE TABLE ProductInventory (
     ID INT,
     ProductID INT,
