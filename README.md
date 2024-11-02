@@ -44,6 +44,16 @@ Make sure to run the command in the folder where the repository is cloned. If yo
 
 Replace `<db username>`, `<db password>`, and `<db host>` with values for your database server before running the command. 
 
+For example on Windows command:
+
+```
+docker run -v C:\projects\database_migrations:/repos --workdir /repos -e INSTALL_MYSQL=true ^
+    -e LIQUIBASE_COMMAND_USERNAME=user ^
+    -e LIQUIBASE_COMMAND_PASSWORD=password ^
+    -e LIQUIBASE_COMMAND_URL=jdbc:mysql://192.168.1.10:3306/ShopDB ^
+    liquibase/liquibase liquibase update --labels="0.0.1"
+```
+
 4. Tag the database with the initial version, so you will be able to rollback any new changesets: 
 
 ```
