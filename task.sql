@@ -38,3 +38,16 @@ CREATE TABLE ProductInventory (
     PRIMARY KEY (ID)
 );
 --rollback DROP TABLE ProductInventory;
+
+--changeset illia:5 labels:0.0.2
+CREATE TABLE Users (
+    ID INT AUTO_INCREMENT PRIMARY KEY,
+    FirstName VARCHAR (50) NOT NULL,
+    LastName VARCHAR (50) NOT NULL,
+    Email VARCHAR (100) NOT NULL UNIQUE
+);
+--rollback DROP TABLE Users;
+
+--changeset illia:6 labels:0.0.3
+CREATE INDEX idx_email ON Users(Email);
+--rollback DROP INDEX idx_email ON Users;
