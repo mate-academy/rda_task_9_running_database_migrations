@@ -38,3 +38,18 @@ CREATE TABLE ProductInventory (
     PRIMARY KEY (ID)
 );
 --rollback DROP TABLE ProductInventory;
+
+-- changeset victoria.otrok:0.0.2
+CREATE TABLE Users (
+    ID INT AUTO_INCREMENT PRIMARY KEY,
+    FirstName VARCHAR(50) NOT NULL,
+    LastName VARCHAR(50) NOT NULL,
+    Email VARCHAR(100) UNIQUE NOT NULL
+);
+
+--rollback DROP TABLE Users;
+
+-- changeset victoria.otrok:0.0.3
+CREATE UNIQUE INDEX idx_email ON Users (Email);
+
+--rollback DROP INDEX idx_email ON Users;
