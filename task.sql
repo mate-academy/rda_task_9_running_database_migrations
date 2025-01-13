@@ -38,3 +38,18 @@ CREATE TABLE ProductInventory (
     PRIMARY KEY (ID)
 );
 --rollback DROP TABLE ProductInventory;
+
+--changeset greena1c:0.0.2
+CREATE TABLE Users(
+    ID INT PRIMARY KEY AUTO_INCREMENT,
+    FirstName VARCHAR(50),
+    LastName VARCHAR(50),
+    Email VARCHAR(50)
+);
+
+--rollback DROP TABLE Users;
+
+--changeset greena1c:0.0.3
+CREATE UNIQUE INDEX idx_email ON Users(Email);
+
+--rollback DROP INDEX idx_email ON Users;
