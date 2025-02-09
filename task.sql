@@ -38,3 +38,17 @@ CREATE TABLE ProductInventory (
     PRIMARY KEY (ID)
 );
 --rollback DROP TABLE ProductInventory;
+
+--changeset mate.acamemy:5 labels:0.0.2
+CREATE TABLE Users (
+    ID INT,
+    FirstName varchar(50),
+	LastName varchar(50),
+    Email varchar(50),
+    PRIMARY KEY (ID)
+);
+--rollback DROP TABLE Users;
+
+--changeset mate.acamemy:6 labels:0.0.3
+CREATE UNIQUE INDEX idx_users_email ON Users (Email);
+--rollback ALTER TABLE Users DROP INDEX idx_users_email;
