@@ -38,3 +38,16 @@ CREATE TABLE ProductInventory (
     PRIMARY KEY (ID)
 );
 --rollback DROP TABLE ProductInventory;
+
+--changeset oleksandr:5 lables:0.0.2
+CREATE TABLE Users (
+    ID INT AUTO_INCREMENT PRIMARY KEY,
+    FirstName VARCHAR(50),
+    LastName VARCHAR(50),
+    Email VARCHAR(50)
+);
+-- rollback DROP TABLE Users;
+
+--changeset oleksandr:6 lables:0.0.2
+ALTER TABLE Users ADD INDEX idx_email (Email);
+-- rollback DROP TABLE Users;
