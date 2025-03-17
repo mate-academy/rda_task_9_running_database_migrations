@@ -1,22 +1,15 @@
---liquibase formatted sql
-
---changeset mate.acamemy:1 labels:0.0.1
 CREATE TABLE Countries (
     ID INT,
     Name VARCHAR(50),
     PRIMARY KEY (ID)
 );
---rollback DROP TABLE Countries;
 
---changeset mate.acamemy:2 labels:0.0.1
 CREATE TABLE Products (
     ID INT AUTO_INCREMENT,
     Name VARCHAR(50),
     PRIMARY KEY (ID)
 );
---rollback DROP TABLE Products;
 
---changeset mate.acamemy:3 labels:0.0.1
 CREATE TABLE Warehouses (
     ID INT AUTO_INCREMENT,
     Name VARCHAR(50),
@@ -25,9 +18,7 @@ CREATE TABLE Warehouses (
 	FOREIGN KEY (CountryID) REFERENCES Countries(ID) ON DELETE NO ACTION,
     PRIMARY KEY (ID)
 );
---rollback DROP TABLE Warehouses;
 
---changeset mate.acamemy:4 labels:0.0.1
 CREATE TABLE ProductInventory (
     ID INT,
     ProductID INT,
@@ -37,4 +28,13 @@ CREATE TABLE ProductInventory (
     FOREIGN KEY (WarehouseID) REFERENCES Warehouses(ID) ON DELETE NO ACTION,
     PRIMARY KEY (ID)
 );
---rollback DROP TABLE ProductInventory;
+
+CREATE TABLE Users (
+    ID INT AUTO_INCREMENT,
+    FirstName VARCHAR(255),
+    LastName VARCHAR(255),
+    Email VARCHAR(255),
+    PRIMARY KEY (ID)
+);
+
+CREATE INDEX EmailIndex ON Users (Email);
