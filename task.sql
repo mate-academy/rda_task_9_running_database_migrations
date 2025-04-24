@@ -38,3 +38,18 @@ CREATE TABLE ProductInventory (
     PRIMARY KEY (ID)
 );
 --rollback DROP TABLE ProductInventory;
+
+
+--changeset gheifr:5 labels:0.0.2
+create table Users (
+    ID INT AUTO_INCREMENT, 
+    FirstName varchar(20), 
+    LastName varchar(20), 
+    Email varchar(20),
+    PRIMARY KEY (ID)
+    );
+--rollback DROP table Users;
+
+--changeset gheifr:6 labels:0.0.3
+CREATE INDEX Email on Users(Email);
+--rollback DROP INDEX Email on Users;
