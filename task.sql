@@ -50,5 +50,8 @@ CREATE TABLE Users (
 --rollback DROP TABLE Users;
 
 --changeset mate.academy:6 labels:0.0.3
-CREATE INDEX idx_users_email ON Users(Email);
---rollback DROP INDEX idx_users_email ON Users;
+<preConditions onFail="MARK_RAN">
+    <tableExists tableName="Users"/>
+</preConditions>
+CREATE INDEX IF NOT EXISTS idx_users_email ON Users(Email);
+--rollback DROP INDEX IF EXISTS idx_users_email ON Users;
