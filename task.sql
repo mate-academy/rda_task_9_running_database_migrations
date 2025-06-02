@@ -50,5 +50,5 @@ create table Users (
 --rollback DROP TABLE Users;
 
 --changeset mate.academy:6 labels:0.0.3
-create index Email on Users(Email);
---rollback ALTER TABLE Users DROP INDEX Email;
+create index idx_users_email on Users(Email);
+--rollback ALTER TABLE Users DROP INDEX idx_users_email;
