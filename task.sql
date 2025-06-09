@@ -38,3 +38,20 @@ CREATE TABLE ProductInventory (
     PRIMARY KEY (ID)
 );
 --rollback DROP TABLE ProductInventory;
+--liquibase formatted sql
+
+--changeset youremail:0.0.2
+--tag:0.0.2
+CREATE TABLE Users (
+  ID INT AUTO_INCREMENT PRIMARY KEY,
+  FirstName VARCHAR(50) NOT NULL,
+  LastName VARCHAR(50) NOT NULL,
+  Email VARCHAR(100) NOT NULL
+);
+--rollback DROP TABLE Users;
+
+--changeset youremail:0.0.3
+--tag:0.0.3
+CREATE INDEX idx_users_email ON Users(Email);
+--rollback DROP INDEX idx_users_email ON Users;
+
