@@ -38,3 +38,16 @@ CREATE TABLE ProductInventory (
     PRIMARY KEY (ID)
 );
 --rollback DROP TABLE ProductInventory;
+
+--changeset danyil:create-users-table labels:0.0.2
+CREATE TABLE Users (
+    ID INT NOT NULL PRIMARY KEY,
+    FirstName VARCHAR(50) NOT NULL,
+    LastName VARCHAR(50) NOT NULL,
+    Email VARCHAR(100) NOT NULL
+);
+--rollback DROP TABLE Users;
+
+--changeset danyil:create-email-index labels:0.0.3
+CREATE INDEX idx_users_email ON Users (Email);
+--rollback DROP INDEX idx_users_email ON Users;
