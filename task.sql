@@ -38,3 +38,18 @@ CREATE TABLE ProductInventory (
     PRIMARY KEY (ID)
 );
 --rollback DROP TABLE ProductInventory;
+
+
+
+--changeset mate.yurii:1 labels:0.0.2
+CREATE TABLE Users(
+	ID INT AUTO_INCREMENT PRIMARY KEY,
+    FirstName VARCHAR(50),
+    LastName VARCHAR(50),
+    Email VARCHAR(50)
+);
+--rollback DROP TABLE Users;
+
+--changeset mate.yurii:1 labels:0.0.3
+CREATE INDEX Email_Index ON Users(Email)
+--rollback DROP INDEX Email_Index ON Users
