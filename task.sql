@@ -38,3 +38,19 @@ CREATE TABLE ProductInventory (
     PRIMARY KEY (ID)
 );
 --rollback DROP TABLE ProductInventory;
+
+
+--changeset tongo:1 labels:0.0.2
+--comment: example comment
+create table Users (
+  id int primary key auto_increment not null,
+  FirstName varchar(50) not null,
+  LastName varchar(50) not null,
+  Email varchar(50) not null
+);
+--rollback DROP TABLE Users;
+
+--changeset tongo:2 labels:0.0.3
+--comment: Add index on Email column in Users table
+CREATE INDEX idx_users_email ON Users(Email);
+--rollback DROP INDEX idx_users_email ON Users;
