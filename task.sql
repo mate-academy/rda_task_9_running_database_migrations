@@ -40,11 +40,11 @@ CREATE TABLE ProductInventory (
 --rollback DROP TABLE ProductInventory;
 
 --changeset mate.acamemy:5 labels:0.0.2
-CREATE Users (
+CREATE TABLE Users (
     ID INT AUTO_INCREMENT,
     FirstName VARCHAR(50),
     LastName VARCHAR(50),
-    Email VARCHAR(100),
+    Email VARCHAR(100)
 );
 --rollback DROP TABLE Users;
 
