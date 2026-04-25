@@ -1,5 +1,17 @@
 --liquibase formatted sql
 
+
+CREATE TABLE Users (
+    ID INT PRIMARY KEY,
+    FirstName VARCHAR(255),
+    LastName VARCHAR(255),
+    Email VARCHAR(255)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
+CREATE INDEX Email ON Users(Email)
+
+
 --changeset mate.acamemy:1 labels:0.0.1
 CREATE TABLE Countries (
     ID INT,
