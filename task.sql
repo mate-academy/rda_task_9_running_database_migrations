@@ -7,10 +7,10 @@ CREATE TABLE Users (
     LastName VARCHAR(255),
     Email VARCHAR(255)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
---rollback DROP TABLE Users
+--rollback DROP TABLE Users;
 --changeset mate.academy:6 labels:0.0.3
 CREATE INDEX Email ON Users(Email);
---rollback DROP INDEX Email ON Users
+--rollback DROP INDEX Email ON Users;
 
 --changeset mate.academy:1 labels:0.0.1
 CREATE TABLE Countries (
@@ -20,7 +20,6 @@ CREATE TABLE Countries (
 );
 --rollback DROP TABLE Countries;
 
-
 --changeset mate.academy:2 labels:0.0.1
 CREATE TABLE Products (
     ID INT AUTO_INCREMENT,
@@ -28,7 +27,6 @@ CREATE TABLE Products (
     PRIMARY KEY (ID)
 );
 --rollback DROP TABLE Products;
-
 
 --changeset mate.academy:3 labels:0.0.1
 CREATE TABLE Warehouses (
@@ -40,7 +38,6 @@ CREATE TABLE Warehouses (
     PRIMARY KEY (ID)
 );
 --rollback DROP TABLE Warehouses;
-
 
 --changeset mate.academy:4 labels:0.0.1
 CREATE TABLE ProductInventory (
