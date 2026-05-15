@@ -43,13 +43,13 @@ CREATE TABLE ProductInventory (
 CREATE TABLE Users (
     ID INT,
     FirstName VARCHAR(50),
-    LastName VARCHAAR(50),
+    LastName VARCHAR(50),
     Email VARCHAR(50),
     PRIMARY KEY (ID)
 );
 --rollback DROP TABLE Users;
 
---changeset anton.gaievyi:6 labels:0.0.2
+--changeset anton.gaievyi:6 labels:0.0.3
 CREATE INDEX idx_email
 ON Users (Email);
---rolback ALTER TABLE Users DROP INDEX idx_email;
+--rollback ALTER TABLE Users DROP INDEX idx_email;
