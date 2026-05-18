@@ -22,7 +22,7 @@ CREATE TABLE Warehouses (
     Name VARCHAR(50),
     Address VARCHAR(50),
     CountryID INT,
-	FOREIGN KEY (CountryID) REFERENCES Countries(ID) ON DELETE NO ACTION,
+    FOREIGN KEY (CountryID) REFERENCES Countries(ID) ON DELETE NO ACTION,
     PRIMARY KEY (ID)
 );
 --rollback DROP TABLE Warehouses;
@@ -50,6 +50,5 @@ CREATE TABLE Users (
 --rollback DROP TABLE Users;
 
 --changeset mate.acamemy:6 labels:0.0.3
-CREATE INDEX idx_users_email
-ON Users(Email);
+CREATE INDEX idx_users_email ON Users(Email);
 --rollback DROP INDEX idx_users_email ON Users;
