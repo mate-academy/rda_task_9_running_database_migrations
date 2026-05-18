@@ -52,4 +52,4 @@ CREATE TABLE Users (
 --changeset anton.gaievyi:6 labels:0.0.3
 CREATE INDEX idx_email
 ON Users (Email);
---rollback ALTER TABLE Users DROP INDEX idx_email;
+--rollback DROP INDEX idx_email ON Users;
