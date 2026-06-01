@@ -17,6 +17,11 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
+    - name: Patch Liquibase Docker image for 5.x compatibility
+      run: |
+        docker pull liquibase/liquibase:latest
+        printf 'FROM liquibase/liquibase:latest\nUSER root\nRUN echo "changeLogFile=task.sql" >> /liquibase/liquibase.docker.properties\n' | docker build -t liquibase/liquibase:latest -
+
     - name: Run the bash tests
       run: |
         ./test.sh
