@@ -1,0 +1,2 @@
+IF( @UsersTable = 0, 'Users table was not found - OK', 'Error: Users table is present in the database')
+Users table was not found - OK
