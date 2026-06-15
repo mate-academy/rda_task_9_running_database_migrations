@@ -20,14 +20,14 @@ docker run --network=test-network -v $(pwd):/repos --workdir /repos/ -e INSTALL_
     -e LIQUIBASE_COMMAND_USERNAME=root \
     -e LIQUIBASE_COMMAND_PASSWORD=P@ssw0rd \
     -e LIQUIBASE_COMMAND_URL=jdbc:mysql://mysql:3306/ShopDB \
-    liquibase/liquibase liquibase update --labels="0.0.1" 
+    liquibase/liquibase liquibase --changelog-file=task.sql update --labels="0.0.1" --log-level flag
 
 echo "INFO: Tagging a database version (0.0.1)"
 docker run --network=test-network -v $(pwd):/repos --workdir /repos/ -e INSTALL_MYSQL=true \
     -e LIQUIBASE_COMMAND_USERNAME=root \
     -e LIQUIBASE_COMMAND_PASSWORD=P@ssw0rd \
     -e LIQUIBASE_COMMAND_URL=jdbc:mysql://mysql:3306/ShopDB \
-    liquibase/liquibase liquibase tag 0.0.1  
+    liquibase/liquibase liquibase --changelog-file=task.sql  tag 0.0.1  --log-level flag
 
 echo "INFO: Running the tests for database schema version 0.0.1"
 docker exec mysql sh -c 'mysql -u root -pP@ssw0rd < /scripts/test-queries/2-test-0.0.1.sql' > log.txt
@@ -40,14 +40,14 @@ docker run --network=test-network -v $(pwd):/repos --workdir /repos/ -e INSTALL_
     -e LIQUIBASE_COMMAND_USERNAME=root \
     -e LIQUIBASE_COMMAND_PASSWORD=P@ssw0rd \
     -e LIQUIBASE_COMMAND_URL=jdbc:mysql://mysql:3306/ShopDB \
-    liquibase/liquibase liquibase update --labels="0.0.2" 
+    liquibase/liquibase liquibase --changelog-file=task.sql update --labels="0.0.2" --log-level flag
 
 echo "INFO: Tagging a database version (0.0.2)"
 docker run --network=test-network -v $(pwd):/repos --workdir /repos/ -e INSTALL_MYSQL=true \
     -e LIQUIBASE_COMMAND_USERNAME=root \
     -e LIQUIBASE_COMMAND_PASSWORD=P@ssw0rd \
     -e LIQUIBASE_COMMAND_URL=jdbc:mysql://mysql:3306/ShopDB \
-    liquibase/liquibase liquibase tag 0.0.2
+    liquibase/liquibase liquibase --changelog-file=task.sql tag 0.0.2 --log-level flag
 
 echo "INFO: Running the tests for database schema version 0.0.2"
 docker exec mysql sh -c 'mysql -u root -pP@ssw0rd < /scripts/test-queries/3-test-0.0.2.sql' > log.txt
@@ -60,14 +60,14 @@ docker run --network=test-network -v $(pwd):/repos --workdir /repos/ -e INSTALL_
     -e LIQUIBASE_COMMAND_USERNAME=root \
     -e LIQUIBASE_COMMAND_PASSWORD=P@ssw0rd \
     -e LIQUIBASE_COMMAND_URL=jdbc:mysql://mysql:3306/ShopDB \
-    liquibase/liquibase liquibase update --labels="0.0.3" 
+    liquibase/liquibase liquibase --changelog-file=task.sql update --labels="0.0.3" --log-level flag
 
 echo "INFO: Tagging a database version (0.0.3)"
 docker run --network=test-network -v $(pwd):/repos --workdir /repos/ -e INSTALL_MYSQL=true \
     -e LIQUIBASE_COMMAND_USERNAME=root \
     -e LIQUIBASE_COMMAND_PASSWORD=P@ssw0rd \
     -e LIQUIBASE_COMMAND_URL=jdbc:mysql://mysql:3306/ShopDB \
-    liquibase/liquibase liquibase tag 0.0.3
+    liquibase/liquibase liquibase --changelog-file=task.sql tag 0.0.3 --log-level flag
 
 echo "INFO: Running the tests for database schema version 0.0.3"
 docker exec mysql sh -c 'mysql -u root -pP@ssw0rd < /scripts/test-queries/3-test-0.0.3.sql' > log.txt
@@ -80,7 +80,7 @@ docker run --network=test-network -v $(pwd):/repos --workdir /repos/ -e INSTALL_
     -e LIQUIBASE_COMMAND_USERNAME=root \
     -e LIQUIBASE_COMMAND_PASSWORD=P@ssw0rd \
     -e LIQUIBASE_COMMAND_URL=jdbc:mysql://mysql:3306/ShopDB \
-    liquibase/liquibase liquibase rollback 0.0.2
+    liquibase/liquibase liquibase --changelog-file=task.sql rollback --tag=0.0.2 --log-level flag
 
 echo "INFO: Running the tests for database schema version 0.0.2"
 docker exec mysql sh -c 'mysql -u root -pP@ssw0rd < /scripts/test-queries/3-test-0.0.2.sql' > log.txt
@@ -93,7 +93,7 @@ docker run --network=test-network -v $(pwd):/repos --workdir /repos/ -e INSTALL_
     -e LIQUIBASE_COMMAND_USERNAME=root \
     -e LIQUIBASE_COMMAND_PASSWORD=P@ssw0rd \
     -e LIQUIBASE_COMMAND_URL=jdbc:mysql://mysql:3306/ShopDB \
-    liquibase/liquibase liquibase rollback 0.0.1
+    liquibase/liquibase liquibase --changelog-file=task.sql rollback --tag=0.0.1 --log-level flag
 
 echo "INFO: Running the tests for database schema version 0.0.1"
 docker exec mysql sh -c 'mysql -u root -pP@ssw0rd < /scripts/test-queries/2-test-0.0.1.sql' > log.txt
