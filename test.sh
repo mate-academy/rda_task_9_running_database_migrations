@@ -20,27 +20,29 @@ docker run --network=test-network -v $(pwd):/repos --workdir /repos/ -e INSTALL_
     -e LIQUIBASE_COMMAND_USERNAME=root \
     -e LIQUIBASE_COMMAND_PASSWORD=P@ssw0rd \
     -e LIQUIBASE_COMMAND_URL=jdbc:mysql://mysql:3306/ShopDB \
-    liquibase/liquibase liquibase update --labels="0.0.1" 
+    -e LIQUIBASE_COMMAND_CHANGELOG_FILE=task.sql \
+    liquibase/liquibase liquibase update --labels="0.0.1"
 
 echo "INFO: Tagging a database version (0.0.1)"
 docker run --network=test-network -v $(pwd):/repos --workdir /repos/ -e INSTALL_MYSQL=true \
     -e LIQUIBASE_COMMAND_USERNAME=root \
     -e LIQUIBASE_COMMAND_PASSWORD=P@ssw0rd \
     -e LIQUIBASE_COMMAND_URL=jdbc:mysql://mysql:3306/ShopDB \
-    liquibase/liquibase liquibase tag 0.0.1  
+    liquibase/liquibase liquibase tag 0.0.1
 
 echo "INFO: Running the tests for database schema version 0.0.1"
 docker exec mysql sh -c 'mysql -u root -pP@ssw0rd < /scripts/test-queries/2-test-0.0.1.sql' > log.txt
 errors=$(cat log.txt | grep "^Error" || true)
 if [ -n "$errors" ]; then echo $errors && exit 1; fi
 
-### v0.0.2 deployment 
+### v0.0.2 deployment
 echo "INFO: Running the database migration 0.0.2"
 docker run --network=test-network -v $(pwd):/repos --workdir /repos/ -e INSTALL_MYSQL=true \
     -e LIQUIBASE_COMMAND_USERNAME=root \
     -e LIQUIBASE_COMMAND_PASSWORD=P@ssw0rd \
     -e LIQUIBASE_COMMAND_URL=jdbc:mysql://mysql:3306/ShopDB \
-    liquibase/liquibase liquibase update --labels="0.0.2" 
+    -e LIQUIBASE_COMMAND_CHANGELOG_FILE=task.sql \
+    liquibase/liquibase liquibase update --labels="0.0.2"
 
 echo "INFO: Tagging a database version (0.0.2)"
 docker run --network=test-network -v $(pwd):/repos --workdir /repos/ -e INSTALL_MYSQL=true \
@@ -54,13 +56,14 @@ docker exec mysql sh -c 'mysql -u root -pP@ssw0rd < /scripts/test-queries/3-test
 errors=$(cat log.txt | grep "^Error" || true)
 if [ -n "$errors" ]; then echo $errors && exit 1; fi
 
-### v0.0.3 deployment 
+### v0.0.3 deployment
 echo "INFO: Running the database migration 0.0.3"
 docker run --network=test-network -v $(pwd):/repos --workdir /repos/ -e INSTALL_MYSQL=true \
     -e LIQUIBASE_COMMAND_USERNAME=root \
     -e LIQUIBASE_COMMAND_PASSWORD=P@ssw0rd \
     -e LIQUIBASE_COMMAND_URL=jdbc:mysql://mysql:3306/ShopDB \
-    liquibase/liquibase liquibase update --labels="0.0.3" 
+    -e LIQUIBASE_COMMAND_CHANGELOG_FILE=task.sql \
+    liquibase/liquibase liquibase update --labels="0.0.3"
 
 echo "INFO: Tagging a database version (0.0.3)"
 docker run --network=test-network -v $(pwd):/repos --workdir /repos/ -e INSTALL_MYSQL=true \
@@ -80,6 +83,7 @@ docker run --network=test-network -v $(pwd):/repos --workdir /repos/ -e INSTALL_
     -e LIQUIBASE_COMMAND_USERNAME=root \
     -e LIQUIBASE_COMMAND_PASSWORD=P@ssw0rd \
     -e LIQUIBASE_COMMAND_URL=jdbc:mysql://mysql:3306/ShopDB \
+    -e LIQUIBASE_COMMAND_CHANGELOG_FILE=task.sql \
     liquibase/liquibase liquibase rollback 0.0.2
 
 echo "INFO: Running the tests for database schema version 0.0.2"
@@ -87,12 +91,13 @@ docker exec mysql sh -c 'mysql -u root -pP@ssw0rd < /scripts/test-queries/3-test
 errors=$(cat log.txt | grep "^Error" || true)
 if [ -n "$errors" ]; then echo $errors && exit 1; fi
 
-### rollback to v0.0.1 
+### rollback to v0.0.1
 echo "INFO: rolling back to database version 0.0.1"
 docker run --network=test-network -v $(pwd):/repos --workdir /repos/ -e INSTALL_MYSQL=true \
     -e LIQUIBASE_COMMAND_USERNAME=root \
     -e LIQUIBASE_COMMAND_PASSWORD=P@ssw0rd \
     -e LIQUIBASE_COMMAND_URL=jdbc:mysql://mysql:3306/ShopDB \
+    -e LIQUIBASE_COMMAND_CHANGELOG_FILE=task.sql \
     liquibase/liquibase liquibase rollback 0.0.1
 
 echo "INFO: Running the tests for database schema version 0.0.1"
