@@ -1,7 +1,7 @@
 name: Test
 
 on:
-  workflow_dispatch: 
+  workflow_dispatch:
   pull_request:
     branches: [ main ]
 
@@ -16,6 +16,10 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+
+    - name: Configure Liquibase image with changelog file
+      run: |
+        printf 'FROM liquibase/liquibase\nENV LIQUIBASE_COMMAND_CHANGELOG_FILE=task.sql\n' | docker build -t liquibase/liquibase -
 
     - name: Run the bash tests
       run: |
