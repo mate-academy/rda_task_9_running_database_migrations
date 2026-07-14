@@ -44,7 +44,6 @@ CREATE TABLE Users (
     ID INT,
     FirstName VARCHAR(50),
     LastName VARCHAR(50),
-    WarehouseAmount INT,
     Email VARCHAR(50),
     PRIMARY KEY (ID)
 );
@@ -52,4 +51,4 @@ CREATE TABLE Users (
 
 --changeset oleh.kovalievskyi:2 labels:0.0.3
 CREATE INDEX Email ON Users(Email);
---rollback DROP INDEX users_email ON Users;
+--rollback DROP INDEX Email ON Users;
