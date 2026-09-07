@@ -49,6 +49,6 @@ CREATE TABLE Users (
 --rollback DROP TABLE Users;
 
 
---changeset student.dev:1 labels:0.0.3
+--changeset student.dev:2 labels:0.0.3
 create index idx_email on Users(Email);
---rollback DROP TABLE ProductInventory;
+--rollback DROP INDEX idx_email ON Users;
