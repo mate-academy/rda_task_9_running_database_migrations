@@ -39,16 +39,17 @@ CREATE TABLE ProductInventory (
 );
 --rollback DROP TABLE ProductInventory;
 
---changeset daniil:5 labels:0.0.2
+--changeset daniil:5 labels:"0.0.2"
 CREATE TABLE Users(
-    ID INT,
-    FirstName VARCHAR (50),
-    LastName VARCHAR (50),
-    Email VARCHAR (100)
+    ID INT AUTO_INCREMENT,
+    FirstName VARCHAR(50),
+    LastName VARCHAR(50),
+    Email VARCHAR(100),
+    PRIMARY KEY (ID)
 );
 --rollback DROP TABLE Users;
 
---changeset daniil:6 labels:0.0.3
+--changeset daniil:6 labels:"0.0.3"
 CREATE INDEX index_email
 ON Users (Email);
 --rollback DROP INDEX index_email ON Users;
