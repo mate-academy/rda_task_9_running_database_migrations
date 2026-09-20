@@ -52,4 +52,4 @@ CREATE TABLE Users (
 
 --changeset kapany322:6 labels:0.0.3
 CREATE INDEX Email ON Users (Email);
---rollback ALTER TABLE Users DROP INDEX Email;
+--rollback DROP INDEX Email ON Users;
