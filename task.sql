@@ -39,7 +39,7 @@ CREATE TABLE ProductInventory (
 );
 --rollback DROP TABLE ProductInventory;
 
---changeset mateuser:1 labels:0.0.2
+--changeset mateuser:5 labels:0.0.2
 CREATE TABLE Users (
     ID INT,
     FirstName VARCHAR(50),
@@ -49,6 +49,6 @@ CREATE TABLE Users (
 );
 --rollback DROP TABLE Users;
 
---changeset mateuser:2 labels:0.0.3
+--changeset mateuser:6 labels:0.0.3
 CREATE INDEX Email ON Users (Email);
 --rollback DROP INDEX Email ON Users;
