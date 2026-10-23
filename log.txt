@@ -1,0 +1,4 @@
+IF( @UsersTable = 1, 'Users table was found - OK', 'Error: Users table is not present in the database')
+Error: Users table is not present in the database
+IF( @EmailIndex = 0, 'Email index was not found - OK', 'Error: Email index is present in the Users table')
+Email index was not found - OK
