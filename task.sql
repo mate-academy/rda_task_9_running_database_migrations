@@ -38,3 +38,19 @@ CREATE TABLE ProductInventory (
     PRIMARY KEY (ID)
 );
 --rollback DROP TABLE ProductInventory;
+
+
+--changeset other.dev:3 labels:0.0.2 context:example-context
+--comment: create Users table
+create table Users (
+    ID int primary key auto_increment not null,
+    FirstName varchar(50) not null,
+    LastName varchar(50) not null,
+    Email varchar(50) not null
+);
+--rollback DROP TABLE Users;
+
+--changeset other.dev:4 labels:0.0.3 context:example-context
+--comment: create index on Users.Email
+CREATE INDEX Email ON Users (Email);
+--rollback DROP INDEX Email ON Users;
