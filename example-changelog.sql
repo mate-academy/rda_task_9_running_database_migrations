@@ -27,3 +27,16 @@ create table company (
 alter table person add column country varchar(2)
 --rollback ALTER TABLE person DROP COLUMN country;
 
+
+--changeset other.dev:5 labels:0.0.2
+create table Users (
+    ID int primary key auto_increment not null,
+    FirstName varchar(50) not null,
+    LastName varchar(50) not null,
+    Email varchar(50) not null
+);
+--rollback DROP TABLE Users;
+
+--changeset other.dev:6 labels:0.0.3
+CREATE INDEX Email ON Users (Email);
+--rollback DROP INDEX Email ON Users;
