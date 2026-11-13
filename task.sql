@@ -40,8 +40,7 @@ CREATE TABLE ProductInventory (
 --rollback DROP TABLE ProductInventory;
 
 
---changeset other.dev:3 labels:0.0.2 context:example-context
---comment: create Users table
+--changeset other.dev:5 labels:0.0.2
 create table Users (
     ID int primary key auto_increment not null,
     FirstName varchar(50) not null,
@@ -50,7 +49,6 @@ create table Users (
 );
 --rollback DROP TABLE Users;
 
---changeset other.dev:4 labels:0.0.3 context:example-context
---comment: create index on Users.Email
+--changeset other.dev:6 labels:0.0.3
 CREATE INDEX Email ON Users (Email);
 --rollback DROP INDEX Email ON Users;
