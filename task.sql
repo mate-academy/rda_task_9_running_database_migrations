@@ -42,8 +42,8 @@ CREATE TABLE ProductInventory (
 --changeset mate.acamemy:5 labels:0.0.2
 CREATE TABLE Users(
     ID INT PRIMARY KEY AUTO_INCREMENT,
-    Firstname VARCHAR(50),
-    Lastname VARCHAR(50),
+    FirstName VARCHAR(50),
+    LastName VARCHAR(50),
     Email VARCHAR(50)
 );
 --rollback DROP TABLE Users;
