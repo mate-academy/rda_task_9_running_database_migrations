@@ -1,4 +1,5 @@
 #! /bin/bash
+set -e
 
 ### This script is used to run end-to-end testing of the schema migrations, developed in this task. 
 
@@ -20,6 +21,7 @@ docker run --network=test-network -v $(pwd):/repos --workdir /repos/ -e INSTALL_
     -e LIQUIBASE_COMMAND_USERNAME=root \
     -e LIQUIBASE_COMMAND_PASSWORD=P@ssw0rd \
     -e LIQUIBASE_COMMAND_URL=jdbc:mysql://mysql:3306/ShopDB \
+    -e LIQUIBASE_COMMAND_CHANGELOG_FILE=task.sql \
     liquibase/liquibase liquibase update --labels="0.0.1" 
 
 echo "INFO: Tagging a database version (0.0.1)"
@@ -27,6 +29,7 @@ docker run --network=test-network -v $(pwd):/repos --workdir /repos/ -e INSTALL_
     -e LIQUIBASE_COMMAND_USERNAME=root \
     -e LIQUIBASE_COMMAND_PASSWORD=P@ssw0rd \
     -e LIQUIBASE_COMMAND_URL=jdbc:mysql://mysql:3306/ShopDB \
+    -e LIQUIBASE_COMMAND_CHANGELOG_FILE=task.sql \
     liquibase/liquibase liquibase tag 0.0.1  
 
 echo "INFO: Running the tests for database schema version 0.0.1"
@@ -40,6 +43,7 @@ docker run --network=test-network -v $(pwd):/repos --workdir /repos/ -e INSTALL_
     -e LIQUIBASE_COMMAND_USERNAME=root \
     -e LIQUIBASE_COMMAND_PASSWORD=P@ssw0rd \
     -e LIQUIBASE_COMMAND_URL=jdbc:mysql://mysql:3306/ShopDB \
+    -e LIQUIBASE_COMMAND_CHANGELOG_FILE=task.sql \
     liquibase/liquibase liquibase update --labels="0.0.2" 
 
 echo "INFO: Tagging a database version (0.0.2)"
@@ -47,6 +51,7 @@ docker run --network=test-network -v $(pwd):/repos --workdir /repos/ -e INSTALL_
     -e LIQUIBASE_COMMAND_USERNAME=root \
     -e LIQUIBASE_COMMAND_PASSWORD=P@ssw0rd \
     -e LIQUIBASE_COMMAND_URL=jdbc:mysql://mysql:3306/ShopDB \
+    -e LIQUIBASE_COMMAND_CHANGELOG_FILE=task.sql \
     liquibase/liquibase liquibase tag 0.0.2
 
 echo "INFO: Running the tests for database schema version 0.0.2"
@@ -60,6 +65,7 @@ docker run --network=test-network -v $(pwd):/repos --workdir /repos/ -e INSTALL_
     -e LIQUIBASE_COMMAND_USERNAME=root \
     -e LIQUIBASE_COMMAND_PASSWORD=P@ssw0rd \
     -e LIQUIBASE_COMMAND_URL=jdbc:mysql://mysql:3306/ShopDB \
+    -e LIQUIBASE_COMMAND_CHANGELOG_FILE=task.sql \
     liquibase/liquibase liquibase update --labels="0.0.3" 
 
 echo "INFO: Tagging a database version (0.0.3)"
@@ -67,6 +73,7 @@ docker run --network=test-network -v $(pwd):/repos --workdir /repos/ -e INSTALL_
     -e LIQUIBASE_COMMAND_USERNAME=root \
     -e LIQUIBASE_COMMAND_PASSWORD=P@ssw0rd \
     -e LIQUIBASE_COMMAND_URL=jdbc:mysql://mysql:3306/ShopDB \
+    -e LIQUIBASE_COMMAND_CHANGELOG_FILE=task.sql \
     liquibase/liquibase liquibase tag 0.0.3
 
 echo "INFO: Running the tests for database schema version 0.0.3"
@@ -80,6 +87,7 @@ docker run --network=test-network -v $(pwd):/repos --workdir /repos/ -e INSTALL_
     -e LIQUIBASE_COMMAND_USERNAME=root \
     -e LIQUIBASE_COMMAND_PASSWORD=P@ssw0rd \
     -e LIQUIBASE_COMMAND_URL=jdbc:mysql://mysql:3306/ShopDB \
+    -e LIQUIBASE_COMMAND_CHANGELOG_FILE=task.sql \
     liquibase/liquibase liquibase rollback 0.0.2
 
 echo "INFO: Running the tests for database schema version 0.0.2"
@@ -93,6 +101,7 @@ docker run --network=test-network -v $(pwd):/repos --workdir /repos/ -e INSTALL_
     -e LIQUIBASE_COMMAND_USERNAME=root \
     -e LIQUIBASE_COMMAND_PASSWORD=P@ssw0rd \
     -e LIQUIBASE_COMMAND_URL=jdbc:mysql://mysql:3306/ShopDB \
+    -e LIQUIBASE_COMMAND_CHANGELOG_FILE=task.sql \
     liquibase/liquibase liquibase rollback 0.0.1
 
 echo "INFO: Running the tests for database schema version 0.0.1"
