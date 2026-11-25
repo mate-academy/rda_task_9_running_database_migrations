@@ -34,10 +34,10 @@ Just in case you want to test your script on your database before submitting a p
 
 ```
 docker run -v $(pwd):/repos --workdir /repos/ -e INSTALL_MYSQL=true \
-    -e LIQUIBASE_COMMAND_USERNAME=myuser \
-    -e LIQUIBASE_COMMAND_PASSWORD=Test123! \
-    -e LIQUIBASE_COMMAND_URL=jdbc:mysql://192.168.68.111:3306/ShopDB \
-    liquibase/liquibase liquibase update --labels="0.0.1" 
+    -e LIQUIBASE_COMMAND_USERNAME=<db username> \
+    -e LIQUIBASE_COMMAND_PASSWORD=<db password> \
+    -e LIQUIBASE_COMMAND_URL=jdbc:mysql://<db host>:3306/ShopDB \
+    liquibase/liquibase liquibase update --labels="0.0.1 
 ```
 
 Make sure to run the command in the folder where the repository is cloned. If you are running the script on Windows, replace `$(pwd)` with the full path of the cloned repository. 
